@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From The Desk — Joe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0a1628;
+  --navy-2: #111f38;
+  --navy-3: #1a2f50;
+  --navy-4: #243a60;
+  --gold: #c9a84c;
+  --gold-dim: #8a6f32;
+  --white: #f0f4f8;
+  --white-dim: #8a9ab0;
+  --white-faint: #3a4a60;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.16);
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  background: var(--navy);
+  z-index: 100;
+}
+
+.header-left { display: flex; align-items: baseline; gap: 10px; }
+
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.logo span { color: var(--gold); }
+
+.header-creds {
+  font-size: 11px;
+  color: var(--white-dim);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-left: 1px solid var(--white-faint);
+  padding-left: 10px;
+}
+
+.header-tag {
+  font-size: 11px;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  padding: 2px 8px;
+  letter-spacing: 0.04em;
+}
+
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  background: var(--navy);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--white-dim);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  letter-spacing: 0.01em;
+  margin-bottom: -1px;
+}
+
+.tab-btn:hover { color: var(--white); }
+.tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+.panel { display: none; padding: 28px 24px; max-width: 780px; margin: 0 auto; }
+.panel.active { display: block; }
+
+.panel-heading { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.panel-sub { font-size: 13px; color: var(--white-dim); margin-bottom: 24px; }
+
+.event-card {
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  transition: border-color 0.15s;
+}
+.event-card:hover { border-color: var(--border-hover); }
+
+.event-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.event-name { font-size: 15px; font-weight: 600; color: var(--white); }
+.event-meta { font-size: 12px; color: var(--white-dim); margin-bottom: 12px; }
+
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+.badge-high { background: rgba(220,60,60,0.15); color: #f07070; border: 1px solid rgba(220,60,60,0.25); }
+.badge-medium { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+.badge-low { background: rgba(60,180,120,0.12); color: #6bcfa0; border: 1px solid rgba(60,180,120,0.2); }
+
+.desk-take {
+  font-size: 13px;
+  color: #a0b4cc;
+  line-height: 1.7;
+  border-left: 2px solid var(--gold-dim);
+  padding-left: 14px;
+}
+
+.live-calendar-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.live-calendar-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.live-calendar-sub {
+  font-size: 12px;
+  color: var(--white-dim);
+  margin-bottom: 16px;
+}
+
+.live-calendar-wrapper {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.live-calendar-wrapper iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.powered-by {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 8px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white-dim);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+textarea, input[type="text"] {
+  width: 100%;
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+textarea { min-height: 130px; resize: vertical; line-height: 1.6; }
+textarea:focus, input[type="text"]:focus { border-color: var(--gold-dim); }
+textarea::placeholder, input::placeholder { color: var(--white-faint); }
+
+.action-btn {
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  letter-spacing: 0.02em;
+  margin-top: 12px;
+}
+.action-btn:hover { opacity: 0.88; }
+.action-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.result-card {
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.result-section { margin-bottom: 18px; }
+.result-section:last-of-type { margin-bottom: 0; }
+
+.result-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.result-text { font-size: 14px; color: #c0d0e0; line-height: 1.75; }
+
+.result-highlight {
+  background: var(--navy-3);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--gold);
+  padding: 14px 16px;
+  margin-top: 16px;
+}
+
+.result-highlight .result-text { color: var(--white); font-weight: 500; }
+
+.disclaimer {
+  font-size: 11px;
+  color: var(--white-faint);
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.loading-text { font-size: 14px; color: var(--white-dim); padding: 12px 0; }
+
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  color: var(--white-faint);
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .header-creds { display: none; }
+  .panel { padding: 20px 16px; }
+  .tab-btn { padding: 12px 12px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header" style="height:auto;padding:12px 24px;">
+  <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;flex:1;">
+    <div class="logo">From The <span>Desk</span> &nbsp;·&nbsp; Joe Perry</div>
+    <div class="header-creds" style="border-left:none;padding-left:0;">CMT &nbsp;·&nbsp; Series 3 &nbsp;·&nbsp; Series 34 &nbsp;·&nbsp; 25 Yrs FX &amp; Futures</div>
+  </div>
+  <div class="header-tag">Formerly SAC Capital &amp; Point72</div>
+</header>
+
+<nav class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('market', this)">Market intel</button>
+  <button class="tab-btn" onclick="switchTab('analyzer', this)">Trade analyzer</button>
+</nav>
+
+
+<!-- ============================================================ -->
+<!-- MARKET INTEL TAB                                             -->
+<!-- *** YOU ONLY EDIT THE DESK TAKE CARDS EACH SUNDAY ***       -->
+<!--                                                              -->
+<!-- HOW TO UPDATE (every Sunday night, takes 20-30 minutes):    -->
+<!--   STEP 1: Go to forexfactory.com > Calendar                 -->
+<!--           Filter to High and Medium impact only             -->
+<!--   STEP 2: Update the "Week of" date on the panel-sub line   -->
+<!--   STEP 3: For each event card, update:                      -->
+<!--           - Event name                                       -->
+<!--           - Badge level (high / medium / low)               -->
+<!--           - Day, date, time ET, and currency                 -->
+<!--           - Your desk take commentary                        -->
+<!--   STEP 4: Save this file and drag it onto Netlify           -->
+<!--                                                              -->
+<!-- NOTE: The live calendar at the bottom updates automatically  -->
+<!-- every second — you never need to touch that section.        -->
+<!-- ============================================================ -->
+
+<div id="market" class="panel active">
+  <div class="panel-heading">What the desk is watching</div>
+
+  <!-- *** STEP 2: UPDATE THIS DATE EVERY WEEK *** -->
+  <div class="panel-sub">Week of June 30, 2026 — institutional perspective. Updated weekly.</div>
+
+
+  <!-- ============================================================ -->
+  <!-- BADGE OPTIONS — use exactly one per event:                  -->
+  <!--   High:   <span class="badge badge-high">High impact</span>   -->
+  <!--   Medium: <span class="badge badge-medium">Medium impact</span>-->
+  <!--   Low:    <span class="badge badge-low">Lower impact</span>   -->
+  <!-- ============================================================ -->
+
+
+  <!-- *** EVENT 1 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">US PCE Price Index</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-high">High impact</span>  <!-- *** EDIT: badge-high / badge-medium / badge-low *** -->
+    </div>
+    <div class="event-meta">Friday, June 27 &nbsp;·&nbsp; 8:30am ET &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">The Fed's preferred inflation gauge. Market is priced for a soft print. Watch the revision to last month more than the headline — that's where the surprise usually hides. A beat to the upside reopens the September rate cut debate fast. USD catches a bid across the board if that happens. First move will be violent. Let it settle before you do anything.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** EVENT 2 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">US Consumer Confidence</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-medium">Medium impact</span>  <!-- *** EDIT: badge level *** -->
+    </div>
+    <div class="event-meta">Tuesday, June 24 &nbsp;·&nbsp; 10:00am ET &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">Second-tier on its own but the market is sensitive to anything that colors the growth narrative right now. A big miss here alongside weak PCE Friday gives the dollar a rough week. Watch EURUSD — it's been creeping toward resistance and needs a catalyst to break it.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** EVENT 3 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">BOE Governor Bailey speaks</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-medium">Medium impact</span>      <!-- *** EDIT: badge level *** -->
+    </div>
+    <div class="event-meta">Wednesday, June 25 &nbsp;·&nbsp; 9:00am ET &nbsp;·&nbsp; GBP</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">GBP has been quietly outperforming and nobody's talking about it. BOE expectations have been shifting. Any dovish lean from Bailey puts that move at risk. Any hawkish surprise accelerates it. Worth watching GBPUSD levels going into the speech.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** EVENT 4 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">Tokyo CPI</span>           <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-low">Lower impact</span>   <!-- *** EDIT: badge level *** -->
+    </div>
+    <div class="event-meta">Thursday, June 26 &nbsp;·&nbsp; 7:30pm ET &nbsp;·&nbsp; JPY</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">Leading indicator for national Japan CPI. If Tokyo CPI stays elevated it keeps the BOJ rate hike conversation alive, which means JPY strength is still on the table. USDJPY has been range-bound — a hot print could break it lower.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** TO ADD A NEW EVENT: copy any event card block above and paste it here *** -->
+
+
+  <!-- ============================================================ -->
+  <!-- LIVE CALENDAR — DO NOT EDIT THIS SECTION                    -->
+  <!-- Updates automatically within 1 second of every release.     -->
+  <!-- No weekly maintenance needed.                               -->
+  <!-- ============================================================ -->
+
+  <div class="live-calendar-section">
+    <div class="live-calendar-label">Live economic calendar</div>
+    <div class="live-calendar-sub">Real-time data — updates within 1 second of release. High and medium impact events, all major economies, Eastern Time.</div>
+    <div class="live-calendar-wrapper">
+      <iframe src="https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=2,3&features=datepicker,timezone,timeselector,filters&countries=25,6,37,72,22,17,39,14,10,35,7,21,43,60,56,36,110,11,26,9,12,4,5&calType=week&timeZone=8&lang=1" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
+    </div>
+    <div class="powered-by">
+      <span style="font-size: 11px; color: var(--white-faint);">Real Time Economic Calendar provided by <a href="https://www.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px; color: var(--gold); font-weight: bold;">Investing.com</a>.</span>
+    </div>
+  </div>
+
+</div>
+<!-- END MARKET INTEL TAB -->
+
+
+<!-- ============================================================ -->
+<!-- TRADE ANALYZER TAB — DO NOT EDIT                            -->
+<!-- Runs automatically. No updates needed.                       -->
+<!-- ============================================================ -->
+
+<div id="analyzer" class="panel">
+  <div class="panel-heading">Trade analyzer</div>
+  <div class="panel-sub">Describe any trade in plain English. Get honest feedback on execution, risk, and psychology.</div>
+
+  <label class="form-label" for="trade-input">What happened?</label>
+  <textarea id="trade-input" placeholder="Example: I went long EURUSD at 1.0850 before NFP because the dollar had been weak all week. The number came out strong and EUR dropped 80 pips. I held through it hoping it would come back and eventually got stopped out at 1.0780 for a 70 pip loss..."></textarea>
+  <button class="action-btn" id="analyze-btn" onclick="analyzeTrade()">Analyze this trade</button>
+  <div id="result-area"></div>
+</div>
+
+
+<footer class="footer">
+  From The Desk &nbsp;·&nbsp; Views expressed are my own and do not represent my employer.<br>
+  This tool is for educational purposes only and does not constitute trading advice.
+</footer>
+
+<script>
+function switchTab(tab, el) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  el.classList.add('active');
+}
+
+async function analyzeTrade() {
+  const input = document.getElementById('trade-input').value.trim();
+  if (!input) return;
+  const btn = document.getElementById('analyze-btn');
+  const resultArea = document.getElementById('result-area');
+  btn.disabled = true; btn.textContent = 'Analyzing...';
+  resultArea.innerHTML = '<p class="loading-text">Reading the tape...</p>';
+
+  try {
+    const response = await fetch("/.netlify/functions/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ trade: input })
+    });
+    const parsed = await response.json();
+    resultArea.innerHTML = `
+      <div class="result-card">
+        <div class="result-section"><div class="result-label">Execution</div><div class="result-text">${parsed.execution}</div></div>
+        <div class="result-section"><div class="result-label">Risk management</div><div class="result-text">${parsed.risk}</div></div>
+        <div class="result-section"><div class="result-label">Psychology</div><div class="result-text">${parsed.psychology}</div></div>
+        <div class="result-highlight"><div class="result-label">The one thing</div><div class="result-text">${parsed.one_thing}</div></div>
+        <div class="disclaimer">This is for educational purposes only and does not constitute trading advice.</div>
+      </div>`;
+  } catch(e) {
+    resultArea.innerHTML = '<p class="loading-text">Something went wrong. Try again.</p>';
+  }
+  btn.disabled = false; btn.textContent = 'Analyze this trade';
+}
+</script>
+</body>
+</html>
