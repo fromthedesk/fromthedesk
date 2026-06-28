@@ -78,28 +78,29 @@ body {
 
 .tab-bar {
   display: flex;
-  border-bottom: 1px solid var(--border);
+  align-items: center;
   padding: 0 24px;
   background: var(--navy);
+  border-bottom: 1px solid var(--border);
 }
 
 .tab-btn {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   color: var(--white-dim);
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   font-weight: 500;
-  padding: 14px 16px;
+  padding: 8px 20px;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
+  transition: all 0.15s;
   letter-spacing: 0.01em;
-  margin-bottom: -1px;
+  margin: 10px 6px 10px 0;
 }
 
-.tab-btn:hover { color: var(--white); }
-.tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+.tab-btn:hover { background: var(--navy-4); color: var(--white); border-color: var(--border-hover); }
+.tab-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
 
 .panel { display: none; padding: 28px 24px; max-width: 780px; margin: 0 auto; }
 .panel.active { display: block; }
