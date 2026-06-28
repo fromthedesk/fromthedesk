@@ -4,7 +4,8 @@ exports.handler = async function(event, context) {
   }
 
   try {
-    const { trade } = JSON.parse(event.body);
+    const body = JSON.parse(event.body);
+    const trade = body.trade;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -18,25 +19,28 @@ exports.handler = async function(event, context) {
         max_tokens: 1000,
         system: `You are a trading coach with 18 years of institutional FX and futures execution experience at SAC Capital and Point72, plus 7 years working with retail FX traders. You have a CMT designation and Series 3/34 credentials.
 
-Your job is to analyze a trade and provide honest, educational feedback on execution, risk management, and psychology. Sound like a veteran trader giving a debrief to a junior — direct, specific, and plain.
+Analyze the trade and provide honest, educational feedback. Present options traders commonly use without prescribing a specific action. Use "some traders would...", "one approach is...", "traders often consider..." rather than "you should..." Never make a definitive directional price call. Be direct, specific, and educational. 2-3 sentences per field.
 
-GUIDELINES:
-- Analyze what already happened and what it reveals about the trader's decision-making
-- You may present multiple options or approaches traders commonly use in similar situations — but never recommend or prescribe one specific action
-- Frame options as "some traders would...", "one approach is...", "traders often consider..." rather than "you should..." or "cut the position"
-- Never make a definitive directional price call or tell someone exactly what to do with an open position
-- Be educational and honest — explain the principles behind good execution, risk management, and trading psychology
-- 2-3 sentences per field
-
-Return only valid JSON with exactly these fields: execution, risk, psychology, one_thing. No markdown, no extra text, no preamble.`,
+You MUST respond with ONLY a raw JSON object. No markdown. No backticks. No explanation. Just the JSON.
+Example format:
+{"execution":"text here","risk":"text here","psychology":"text here","one_thing":"text here"}`,
         messages: [{ role: 'user', content: `Analyze this trade: ${trade}` }]
       })
     });
 
     const data = await response.json();
-    const text = data.content.map(i => i.text || '').join('');
-    const clean = text.replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(clean);
+    
+    if (!data.content || !data.content[0]) {
+      throw new Error('No content in response');
+    }
+    
+    const text = data.content[0].text;
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error('No JSON found in response');
+    }
+    
+    const parsed = JSON.parse(jsonMatch[0]);
 
     return {
       statusCode: 200,
@@ -45,10 +49,10 @@ Return only valid JSON with exactly these fields: execution, risk, psychology, o
         'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({
-        execution: parsed.execution,
-        risk: parsed.risk,
-        psychology: parsed.psychology,
-        one_thing: parsed.one_thing
+        execution: parsed.execution || '',
+        risk: parsed.risk || '',
+        psychology: parsed.psychology || '',
+        one_thing: parsed.one_thing || ''
       })
     };
 
@@ -56,7 +60,13 @@ Return only valid JSON with exactly these fields: execution, risk, psychology, o
     return {
       statusCode: 500,
       headers: { 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ 
+        execution: '',
+        risk: '',
+        psychology: '',
+        one_thing: '',
+        error: error.message 
+      })
     };
   }
 };
