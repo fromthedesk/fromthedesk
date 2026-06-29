@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>From The Desk — Joe</title>
+<title>From The Desk — Joe Perry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
@@ -36,18 +36,17 @@ body {
 
 .header {
   border-bottom: 1px solid var(--border);
-  padding: 0 24px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  background: var(--navy);
   position: sticky;
   top: 0;
-  background: var(--navy);
   z-index: 100;
 }
 
-.header-left { display: flex; align-items: baseline; gap: 10px; }
+.header-left { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; flex: 1; }
 
 .logo {
   font-family: 'DM Serif Display', serif;
@@ -63,8 +62,6 @@ body {
   color: var(--white-dim);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-left: 1px solid var(--white-faint);
-  padding-left: 10px;
 }
 
 .header-tag {
@@ -74,6 +71,7 @@ body {
   border-radius: 4px;
   padding: 2px 8px;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .tab-bar {
@@ -102,8 +100,7 @@ body {
 .tab-btn:hover { background: var(--navy-4); color: var(--white); border-color: var(--border-hover); }
 .tab-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
 
-.panel { display: none; padding: 28px 24px; max-width: 780px; margin: 0 auto; }
-.panel.active { display: block; }
+.panel { padding: 28px 24px; max-width: 780px; margin: 0 auto; }
 
 .panel-heading { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
 .panel-sub { font-size: 13px; color: var(--white-dim); margin-bottom: 24px; }
@@ -129,6 +126,7 @@ body {
   text-transform: uppercase;
   padding: 3px 9px;
   border-radius: 4px;
+  white-space: nowrap;
 }
 .badge-high { background: rgba(220,60,60,0.15); color: #f07070; border: 1px solid rgba(220,60,60,0.25); }
 .badge-medium { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
@@ -142,12 +140,28 @@ body {
   padding-left: 14px;
 }
 
+.warning-banner {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+.warning-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.warning-text { font-size: 13px; color: #a0b4cc; line-height: 1.6; }
+
 .live-calendar-section {
   margin-top: 32px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
 }
-
 .live-calendar-label {
   font-size: 11px;
   font-weight: 500;
@@ -156,29 +170,9 @@ body {
   color: var(--gold);
   margin-bottom: 6px;
 }
-
-.live-calendar-sub {
-  font-size: 12px;
-  color: var(--white-dim);
-  margin-bottom: 16px;
-}
-
-.live-calendar-wrapper {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-.live-calendar-wrapper iframe {
-  display: block;
-  width: 100%;
-  border: none;
-}
-
-.powered-by {
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 8px;
-}
+.live-calendar-sub { font-size: 12px; color: var(--white-dim); margin-bottom: 16px; }
+.live-calendar-wrapper { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.live-calendar-wrapper iframe { display: block; width: 100%; border: none; }
 
 .form-label {
   font-size: 12px;
@@ -190,7 +184,7 @@ body {
   display: block;
 }
 
-textarea, input[type="text"] {
+textarea {
   width: 100%;
   background: var(--navy-2);
   border: 1px solid var(--border);
@@ -201,11 +195,12 @@ textarea, input[type="text"] {
   padding: 12px 14px;
   transition: border-color 0.15s;
   outline: none;
+  min-height: 130px;
+  resize: vertical;
+  line-height: 1.6;
 }
-
-textarea { min-height: 130px; resize: vertical; line-height: 1.6; }
-textarea:focus, input[type="text"]:focus { border-color: var(--gold-dim); }
-textarea::placeholder, input::placeholder { color: var(--white-faint); }
+textarea:focus { border-color: var(--gold-dim); }
+textarea::placeholder { color: var(--white-faint); }
 
 .action-btn {
   background: var(--gold);
@@ -231,10 +226,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
   padding: 20px;
   margin-top: 16px;
 }
-
 .result-section { margin-bottom: 18px; }
-.result-section:last-of-type { margin-bottom: 0; }
-
 .result-label {
   font-size: 10px;
   font-weight: 600;
@@ -243,9 +235,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
   color: var(--gold);
   margin-bottom: 6px;
 }
-
 .result-text { font-size: 14px; color: #c0d0e0; line-height: 1.75; }
-
 .result-highlight {
   background: var(--navy-3);
   border-radius: var(--radius-sm);
@@ -253,9 +243,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
   padding: 14px 16px;
   margin-top: 16px;
 }
-
 .result-highlight .result-text { color: var(--white); font-weight: 500; }
-
 .disclaimer {
   font-size: 11px;
   color: var(--white-faint);
@@ -263,7 +251,6 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
   padding-top: 14px;
   border-top: 1px solid var(--border);
 }
-
 .loading-text { font-size: 14px; color: var(--white-dim); padding: 12px 0; }
 
 .footer {
@@ -276,18 +263,18 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 }
 
 @media (max-width: 600px) {
-  .header-creds { display: none; }
+  .header-tag { display: none; }
   .panel { padding: 20px 16px; }
-  .tab-btn { padding: 12px 12px; font-size: 12px; }
+  .tab-btn { padding: 8px 12px; font-size: 12px; }
 }
 </style>
 </head>
 <body>
 
-<header class="header" style="height:auto;padding:12px 24px;">
-  <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;flex:1;">
+<header class="header">
+  <div class="header-left">
     <div class="logo">From The <span>Desk</span> &nbsp;·&nbsp; Joe Perry</div>
-    <div class="header-creds" style="border-left:none;padding-left:0;">CMT &nbsp;·&nbsp; Series 3 &nbsp;·&nbsp; Series 34 &nbsp;·&nbsp; 25 Yrs FX &amp; Futures</div>
+    <div class="header-creds">CMT &nbsp;·&nbsp; Series 3 &nbsp;·&nbsp; Series 34 &nbsp;·&nbsp; 25 Yrs FX &amp; Futures</div>
   </div>
   <div class="header-tag">Formerly SAC Capital &amp; Point72</div>
 </header>
@@ -302,7 +289,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 <!-- MARKET INTEL TAB                                             -->
 <!-- *** YOU ONLY EDIT THE DESK TAKE CARDS EACH SUNDAY ***       -->
 <!--                                                              -->
-<!-- HOW TO UPDATE (every Sunday night, takes 20-30 minutes):    -->
+<!-- HOW TO UPDATE (every Sunday night):                         -->
 <!--   STEP 1: Go to forexfactory.com > Calendar                 -->
 <!--           Filter to High and Medium impact only             -->
 <!--   STEP 2: Update the "Week of" date on the panel-sub line   -->
@@ -311,38 +298,28 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 <!--           - Badge level (high / medium / low)               -->
 <!--           - Day, date, time ET, and currency                 -->
 <!--           - Your desk take commentary                        -->
-<!--   STEP 4: Save this file and drag it onto Netlify           -->
+<!--   STEP 4: Upload index.html to GitHub — deploys in 30 secs  -->
 <!--                                                              -->
-<!-- NOTE: The live calendar at the bottom updates automatically  -->
-<!-- every second — you never need to touch that section.        -->
+<!-- NOTE: The live calendar updates automatically every second  -->
 <!-- ============================================================ -->
 
 <div id="market" class="panel" style="display:block;">
   <div class="panel-heading">What the Desk is Thinking</div>
 
-  <!-- *** STEP 2: UPDATE THIS DATE EVERY WEEK *** -->
+  <!-- *** UPDATE THIS DATE EVERY WEEK *** -->
   <div class="panel-sub">Week of June 29, 2026 — institutional perspective. Updated weekly.</div>
 
-
-  <!-- ============================================================ -->
-  <!-- BADGE OPTIONS — use exactly one per event:                  -->
-  <!--   High:   <span class="badge badge-high">High impact</span>   -->
-  <!--   Medium: <span class="badge badge-medium">Medium impact</span>-->
-  <!--   Low:    <span class="badge badge-low">Lower impact</span>   -->
-  <!-- ============================================================ -->
-
-
-  <!-- *** EVENT 1 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 1 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">Quarter-End &amp; Half-Year Flows — Watch the London Fix</span>
       <span class="badge badge-high">High impact</span>
     </div>
     <div class="event-meta">All week &nbsp;·&nbsp; Especially Mon Jun 29 &amp; Tue Jun 30 &nbsp;·&nbsp; 11:00am ET London Fix &nbsp;·&nbsp; All pairs</div>
-    <div class="desk-take">Corporate FX, quarter-end, and half-year rebalancing all hit Friday. But don't assume it's over — the major players don't always finish in one day. Sovereign wealth funds and pension funds that need to rebalance portfolios don't care about price. They just need to get done. That flow hits hardest around the London Fix at 11:00am ET. If you're in a position around that time and the market moves against you for no obvious reason, this is why. These aren't traders — they're allocators with mandates. They'll move the market whether it's convenient or not. Watch the fix closely Monday and Tuesday especially.</div>
+    <div class="desk-take">Corporate FX, quarter-end, and half-year rebalancing all hit Friday. But don't assume it's over — the major players don't always finish in one day. Sovereign wealth funds and pension funds that need to rebalance portfolios don't care about price. They just need to get done. That flow hits hardest around the London Fix at 11:00am ET. If you're in a position around that time and the market moves against you for no obvious reason, this is why. These aren't traders — they're allocators with mandates. They'll move the market whether it's convenient or not.</div>
   </div>
 
-  <!-- *** EVENT 2 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 2 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">USDJPY — Watch 161.80/162.00</span>
@@ -352,35 +329,33 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
     <div class="desk-take">USDJPY is approaching levels that have historically triggered Bank of Japan intervention. The market knows it and traders will be watching every tick. What makes this week particularly interesting is the July 4th US holiday — thin liquidity and a skeleton crew on desks is exactly the environment the BOJ has historically favored to maximize intervention impact. A smaller amount of capital moves the market further when nobody is around to push back. If you're trading JPY pairs this week, know where you are. Intervention risk doesn't announce itself.</div>
   </div>
 
-
-    <div style="font-size:13px;color:#a0b4cc;line-height:1.6;">Three major events land on Wednesday: the Sintra central bank panel at 9:00am ET with Warsh, Lagarde, Bailey and Macklem, ISM Manufacturing at 10:00am ET, and JOLTS at 10:00am ET. USD and EUR pairs will be volatile all morning. Have your positions managed before the open. EUR pairs in particular will be volatile all morning. Have your levels defined before the open.</div>
-  </div>
-
-  <!-- *** EVENT 3 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 3 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">EU CPI Flash Estimate</span>
       <span class="badge badge-high">High impact</span>
     </div>
     <div class="event-meta">Tuesday, June 30 &nbsp;·&nbsp; 5:00am ET &nbsp;·&nbsp; EUR</div>
-    <div class="desk-take">The ECB is on hold and the market knows it. A soft print keeps them there and puts mild pressure on EUR. But a stronger-than-expected number — especially in core — could start the conversation about hiking sooner rather than later. That's the scenario that moves the market. With Lagarde on the Sintra panel the same morning, a hot CPI print gives her a hawkish platform and the EUR reaction could be sharp. Core is what matters more than headline — watch that number closely.</div>
+    <div class="desk-take">The ECB is on hold and the market knows it. A soft print keeps them there and puts mild pressure on EUR. But a stronger-than-expected number — especially in core — could start the conversation about hiking sooner rather than later. That's the scenario that moves the market. With Lagarde on the Sintra panel the next morning, a hot CPI print gives her a hawkish platform and the EUR reaction could be sharp. Core is what matters more than headline — watch that number closely.</div>
   </div>
 
+  <!-- WEDNESDAY WARNING -->
+  <div class="warning-banner">
+    <div class="warning-label">⚠ Wednesday July 1st — Busiest Day of the Week</div>
+    <div class="warning-text">Three major events land on Wednesday: the Sintra central bank panel at 9:00am ET with Warsh, Lagarde, Bailey and Macklem, ISM Manufacturing at 10:00am ET, and JOLTS at 10:00am ET. USD and EUR pairs will be volatile all morning. Have your positions managed before the open.</div>
+  </div>
 
-  <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-    <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#c9a84c;margin-bottom:4px;">⚠ Wednesday July 1st — Busiest Day of the Week</div>
-
-    <!-- *** EVENT 4 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 4 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">ECB Sintra Forum — Central Bank Panel</span>
       <span class="badge badge-high">High impact</span>
     </div>
     <div class="event-meta">Wednesday, July 1 &nbsp;·&nbsp; 9:00am ET &nbsp;·&nbsp; Sintra, Portugal &nbsp;·&nbsp; EUR/USD/GBP/CAD</div>
-    <div class="desk-take">The most important event of the week. Lagarde, Warsh, Bailey, and Macklem all on stage together at the ECB Sintra Forum on the final day of the conference. This isn't a prepared speech — it's a live panel with questions, which means unscripted responses from four of the world's most important central bankers at the same time. Watch Warsh especially — every word will be parsed for rate signals given the hawkish tone from his first FOMC. With EU CPI dropping the same morning, Lagarde's comments on inflation could move EURUSD instantly. Have your positions managed before 9am.</div>
+    <div class="desk-take">The most important event of the week. Lagarde, Warsh, Bailey, and Macklem all on stage together at the ECB Sintra Forum on the final day of the conference. This isn't a prepared speech — it's a live panel with questions, which means unscripted responses from four of the world's most important central bankers at the same time. Watch Warsh especially — every word will be parsed for rate signals given the hawkish tone from his first FOMC. With EU CPI dropping the day before, Lagarde's comments on inflation could move EURUSD instantly. Have your positions managed before 9am.</div>
   </div>
 
-  <!-- *** EVENT 5 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 5 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">US ISM Manufacturing PMI</span>
@@ -390,7 +365,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
     <div class="desk-take">Manufacturing has been on a solid run — May came in at 54, the strongest reading since May 2022. Consensus for June is sitting at 53.7 so the bar is set high and the market is expecting continued expansion. A miss below consensus raises questions about whether the momentum is fading. A beat keeps the growth narrative intact and gives Warsh more reason to stay hawkish. Watch prices paid — pressure has remained elevated and a hot reading alongside strong activity gives the Fed exactly the cover it needs to hold rates higher for longer.</div>
   </div>
 
-  <!-- *** EVENT 6 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 6 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">US JOLTS Job Openings</span>
@@ -400,55 +375,43 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
     <div class="desk-take">The labor market is the Fed's other mandate and right now it's under a microscope. With the next FOMC on July 28-29 and the market still digesting Warsh's hawkish tone, every labor data point matters more than usual. A soft JOLTS number reinforces the case for rate cuts and softens USD. A strong number keeps the higher-for-longer trade alive. Watch the quits rate inside the report — that's the real signal on labor market health.</div>
   </div>
 
-  <!-- *** EVENT 7 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 7 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">US Non-Farm Payrolls</span>
       <span class="badge badge-high">High impact</span>
     </div>
     <div class="event-meta">Thursday, July 2 &nbsp;·&nbsp; 8:30am ET &nbsp;·&nbsp; USD</div>
-    <div class="desk-take">Consensus is sitting at 114k. Coming off a week with JOLTS and the Sintra panel, the market will be primed for this. A number below 100k changes the conversation entirely and brings rate cuts back onto the table fast. A number above 150k keeps Warsh's hawkish stance looking justified. The first move after the print will be violent — let the dust settle before you do anything. Note this drops Thursday July 2nd — US markets observe the July 4th holiday on Friday July 3rd. Expect an early close and thin conditions after the number hits.</div>
+    <div class="desk-take">Consensus is sitting at 114k. Coming off a week with JOLTS and the Sintra panel, the market will be primed for this. A number below 100k changes the conversation entirely and brings rate cuts back onto the table fast. A number above 150k keeps Warsh's hawkish stance looking justified. The first move after the print will be violent — let the dust settle before you do anything. Note this drops Thursday July 2nd — US markets observe the July 4th holiday on Friday July 3rd.</div>
   </div>
 
-  <!-- *** EVENT 8 — UPDATE ALL FOUR FIELDS *** -->
+  <!-- EVENT 8 -->
   <div class="event-card">
     <div class="event-top">
       <span class="event-name">US Independence Day — Market Holiday</span>
       <span class="badge badge-medium">Medium impact</span>
     </div>
     <div class="event-meta">Friday, July 3 (observed) &nbsp;·&nbsp; All Day &nbsp;·&nbsp; USD</div>
-    <div class="desk-take">July 4th falls on a Saturday this year so the US is observing the holiday on Friday July 3rd — the same day as NFP. US markets close early after the jobs report. FX is still open but volume drops off fast after the number hits. Expect thin conditions from Thursday afternoon through the weekend. The BOJ has historically loved this kind of low-liquidity environment if they decide to intervene in JPY. Know your risk going into the long weekend.</div>
+    <div class="desk-take">July 4th falls on a Saturday this year so the US is observing the holiday on Friday July 3rd. US markets close early after NFP drops Thursday. FX is still open but volume drops off fast. Expect thin conditions from Thursday afternoon through the weekend. The BOJ has historically loved this kind of low-liquidity environment if they decide to intervene in JPY. Know your risk going into the long weekend.</div>
   </div>
 
-    <!-- *** TO ADD A NEW EVENT: copy any event card block above and paste it here *** -->
+  <!-- *** TO ADD A NEW EVENT: copy any event card block above and paste it here *** -->
 
-
-  <!-- ============================================================ -->
-  <!-- LIVE CALENDAR — DO NOT EDIT THIS SECTION                    -->
-  <!-- Updates automatically within 1 second of every release.     -->
-  <!-- No weekly maintenance needed.                               -->
-  <!-- ============================================================ -->
-
+  <!-- LIVE CALENDAR SECTION — DO NOT EDIT -->
   <div class="live-calendar-section">
     <div class="live-calendar-label">Live economic calendar</div>
     <div class="live-calendar-sub">Real-time data — updates within 1 second of release. To filter by impact level, click the filter icon inside the calendar and select Medium and High importance.</div>
     <div class="live-calendar-wrapper">
       <iframe src="https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=2,3&features=datepicker,timezone,timeselector,filters&countries=25,6,37,72,22,17,39,14,10,35,7,21,43,60,56,36,110,11,26,9,12,4,5&calType=week&timeZone=8&lang=1" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
     </div>
-    <div class="powered-by">
-      <span style="font-size: 11px; color: var(--white-faint);">Real Time Economic Calendar provided by <a href="https://www.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px; color: var(--gold); font-weight: bold;">Investing.com</a>.</span>
+    <div style="margin-top:8px;">
+      <span style="font-size:11px;color:var(--white-faint);">Real Time Economic Calendar provided by <a href="https://www.investing.com/" rel="nofollow" target="_blank" style="font-size:11px;color:var(--gold);font-weight:bold;">Investing.com</a>.</span>
     </div>
   </div>
-
 </div>
-<!-- END MARKET INTEL TAB -->
 
 
-<!-- ============================================================ -->
-<!-- TRADE ANALYZER TAB — DO NOT EDIT                            -->
-<!-- Runs automatically. No updates needed.                       -->
-<!-- ============================================================ -->
-
+<!-- TRADE ANALYZER TAB — DO NOT EDIT -->
 <div id="analyzer" class="panel" style="display:none;">
   <div class="panel-heading">Trade analyzer</div>
   <div class="panel-sub">Describe any trade in plain English. Get honest feedback on execution, risk, and psychology.</div>
@@ -468,9 +431,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 <script>
 function switchTab(tab, el) {
   document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => {
-    p.style.display = 'none';
-  });
+  document.querySelectorAll('.panel').forEach(p => p.style.display = 'none');
   document.getElementById(tab).style.display = 'block';
   el.classList.add('active');
 }
@@ -484,9 +445,9 @@ async function analyzeTrade() {
   resultArea.innerHTML = '<p class="loading-text">Reading the tape...</p>';
 
   try {
-    const response = await fetch("/.netlify/functions/analyze", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('/.netlify/functions/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ trade: input })
     });
     const parsed = await response.json();
