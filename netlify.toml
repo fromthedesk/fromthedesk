@@ -1,0 +1,5 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "frame-src 'self' https://sslecal2.investing.com https://*.investing.com; default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data:;"
+    X-Frame-Options = "SAMEORIGIN"
