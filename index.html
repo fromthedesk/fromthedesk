@@ -317,8 +317,8 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 <!-- every second — you never need to touch that section.        -->
 <!-- ============================================================ -->
 
-<div id="market" class="panel active">
-  <div class="panel-heading">What the desk is watching</div>
+<div id="market" class="panel" style="display:block;">
+  <div class="panel-heading">What the Desk is Thinking</div>
 
   <!-- *** STEP 2: UPDATE THIS DATE EVERY WEEK *** -->
   <div class="panel-sub">Week of June 30, 2026 — institutional perspective. Updated weekly.</div>
@@ -335,41 +335,81 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
   <!-- *** EVENT 1 — UPDATE ALL FOUR FIELDS *** -->
   <div class="event-card">
     <div class="event-top">
-      <span class="event-name">US PCE Price Index</span> <!-- *** EDIT: Event name *** -->
-      <span class="badge badge-high">High impact</span>  <!-- *** EDIT: badge-high / badge-medium / badge-low *** -->
+      <span class="event-name">German Unemployment Change</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-medium">Medium impact</span>  <!-- *** EDIT: badge-high / badge-medium / badge-low *** -->
     </div>
-    <div class="event-meta">Friday, June 27 &nbsp;·&nbsp; 8:30am ET &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
-    <div class="desk-take">The Fed's preferred inflation gauge. Market is priced for a soft print. Watch the revision to last month more than the headline — that's where the surprise usually hides. A beat to the upside reopens the September rate cut debate fast. USD catches a bid across the board if that happens. First move will be violent. Let it settle before you do anything.</div> <!-- *** EDIT: Your desk take *** -->
+    <div class="event-meta">Tuesday, July 1 &nbsp;·&nbsp; 3:55am ET &nbsp;·&nbsp; EUR</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">Germany's labor market has been softening and this week's number is expected to show further deterioration. On its own it's a second-tier release, but with EU CPI also dropping this week the combination matters — a weak jobs number alongside cooling inflation gives the ECB more cover to cut. Watch EURUSD for a reaction if the number surprises to the downside.</div> <!-- *** EDIT: Your desk take *** -->
   </div>
 
   <!-- *** EVENT 2 — UPDATE ALL FOUR FIELDS *** -->
   <div class="event-card">
     <div class="event-top">
-      <span class="event-name">US Consumer Confidence</span> <!-- *** EDIT: Event name *** -->
-      <span class="badge badge-medium">Medium impact</span>  <!-- *** EDIT: badge level *** -->
+      <span class="event-name">EU CPI Flash Estimate</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-high">High impact</span>  <!-- *** EDIT: badge level *** -->
     </div>
-    <div class="event-meta">Tuesday, June 24 &nbsp;·&nbsp; 10:00am ET &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
-    <div class="desk-take">Second-tier on its own but the market is sensitive to anything that colors the growth narrative right now. A big miss here alongside weak PCE Friday gives the dollar a rough week. Watch EURUSD — it's been creeping toward resistance and needs a catalyst to break it.</div> <!-- *** EDIT: Your desk take *** -->
+    <div class="event-meta">Tuesday, July 1 &nbsp;·&nbsp; 5:00am ET &nbsp;·&nbsp; EUR</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">The number the ECB actually cares about. Core is what matters more than headline — energy distortions are well understood at this point. A soft core print keeps the ECB cutting path intact and puts pressure on EUR. A surprise to the upside complicates things fast. With Warsh speaking later in the week, EURUSD is set up for a volatile few days.</div> <!-- *** EDIT: Your desk take *** -->
   </div>
 
   <!-- *** EVENT 3 — UPDATE ALL FOUR FIELDS *** -->
   <div class="event-card">
     <div class="event-top">
-      <span class="event-name">BOE Governor Bailey speaks</span> <!-- *** EDIT: Event name *** -->
-      <span class="badge badge-medium">Medium impact</span>      <!-- *** EDIT: badge level *** -->
+      <span class="event-name">US JOLTS Job Openings</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-high">High impact</span>      <!-- *** EDIT: badge level *** -->
     </div>
-    <div class="event-meta">Wednesday, June 25 &nbsp;·&nbsp; 9:00am ET &nbsp;·&nbsp; GBP</div> <!-- *** EDIT: Day, date, time, currency *** -->
-    <div class="desk-take">GBP has been quietly outperforming and nobody's talking about it. BOE expectations have been shifting. Any dovish lean from Bailey puts that move at risk. Any hawkish surprise accelerates it. Worth watching GBPUSD levels going into the speech.</div> <!-- *** EDIT: Your desk take *** -->
+    <div class="event-meta">Wednesday, July 2 &nbsp;·&nbsp; 10:00am ET &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">The labor market is the Fed's other mandate and right now it's under a microscope. With the next Fed meeting on July 28-29 and the market trying to figure out Warsh's next move, every labor data point matters more than usual. A soft JOLTS number reinforces the case for rate cuts and softens USD. A strong number keeps the higher-for-longer trade alive. Watch the quits rate inside the report — that's the real signal on labor market health.</div> <!-- *** EDIT: Your desk take *** -->
   </div>
 
   <!-- *** EVENT 4 — UPDATE ALL FOUR FIELDS *** -->
   <div class="event-card">
     <div class="event-top">
-      <span class="event-name">Tokyo CPI</span>           <!-- *** EDIT: Event name *** -->
-      <span class="badge badge-low">Lower impact</span>   <!-- *** EDIT: badge level *** -->
+      <span class="event-name">Fed Chair Warsh Speaks</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-high">High impact</span>   <!-- *** EDIT: badge level *** -->
     </div>
-    <div class="event-meta">Thursday, June 26 &nbsp;·&nbsp; 7:30pm ET &nbsp;·&nbsp; JPY</div> <!-- *** EDIT: Day, date, time, currency *** -->
-    <div class="desk-take">Leading indicator for national Japan CPI. If Tokyo CPI stays elevated it keeps the BOJ rate hike conversation alive, which means JPY strength is still on the table. USDJPY has been range-bound — a hot print could break it lower.</div> <!-- *** EDIT: Your desk take *** -->
+    <div class="event-meta">Wednesday, July 2 &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">This is the most important event of the week. Warsh has made clear he has no interest in forward guidance, so don't expect explicit rate signals. What you're listening for is his tone on inflation — at his first press conference he used the term "price stability" about a dozen times. Any hint of comfort on inflation is USD negative. Any reinforcement of the hawkish tone is USD positive. The dot plot showed the committee split 9-9 between those expecting steady rates or a hike — Warsh's words this week will move that needle in the market's mind.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** EVENT 5 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">US ISM Manufacturing PMI</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-medium">Medium impact</span>   <!-- *** EDIT: badge level *** -->
+    </div>
+    <div class="event-meta">Thursday, July 3 &nbsp;·&nbsp; 10:00am ET &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">Manufacturing has been in contraction territory and the market knows it. A number below 50 is expected and largely priced in — what moves the market is the degree of miss or beat. Watch the prices paid component inside the report given the inflation backdrop. A hot prices paid number alongside weak activity is the worst combination for risk sentiment.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** EVENT 6 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">US Non-Farm Payrolls</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-high">High impact</span>   <!-- *** EDIT: badge level *** -->
+    </div>
+    <div class="event-meta">Thursday, July 3 &nbsp;·&nbsp; 8:30am ET &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">Consensus is sitting at 114k. Coming off a week with JOLTS and Warsh speaking, the market will be primed for this. A number below 100k changes the conversation entirely and brings rate cuts back onto the table fast. A number above 150k keeps Warsh's hawkish stance looking justified. The first move after the print will be violent — let the dust settle before you do anything.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** EVENT 7 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">US Independence Day — Holiday</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-medium">Medium impact</span>   <!-- *** EDIT: badge level *** -->
+    </div>
+    <div class="event-meta">Friday, July 4 &nbsp;·&nbsp; All Day &nbsp;·&nbsp; USD</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">US markets are closed — equities, bonds, futures. FX is still open but don't expect much. Volume will be thin all week as traders start checking out Thursday afternoon. Liquidity dries up fast in holiday markets and spreads widen. If NFP drops Thursday before the holiday, expect an exaggerated initial move followed by nothing. Tread carefully.</div> <!-- *** EDIT: Your desk take *** -->
+  </div>
+
+  <!-- *** EVENT 8 — UPDATE ALL FOUR FIELDS *** -->
+  <div class="event-card">
+    <div class="event-top">
+      <span class="event-name">USDJPY — Watch 161.80</span> <!-- *** EDIT: Event name *** -->
+      <span class="badge badge-high">High impact</span>   <!-- *** EDIT: badge level *** -->
+    </div>
+    <div class="event-meta">All week &nbsp;·&nbsp; JPY</div> <!-- *** EDIT: Day, date, time, currency *** -->
+    <div class="desk-take">USDJPY is approaching levels that have historically triggered Bank of Japan intervention. The market knows it and traders will be watching every tick. What makes this week particularly interesting is the July 4th US holiday — thin liquidity and a skeleton crew on desks is exactly the environment the BOJ has historically favored to maximize intervention impact. A smaller amount of capital moves the market further when nobody is around to push back. If you're trading JPY pairs this week, know where you are. Intervention risk doesn't announce itself.</div> <!-- *** EDIT: Your desk take *** -->
   </div>
 
   <!-- *** TO ADD A NEW EVENT: copy any event card block above and paste it here *** -->
@@ -383,7 +423,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 
   <div class="live-calendar-section">
     <div class="live-calendar-label">Live economic calendar</div>
-    <div class="live-calendar-sub">Real-time data — updates within 1 second of release. High and medium impact events, all major economies, Eastern Time.</div>
+    <div class="live-calendar-sub">Real-time data — updates within 1 second of release. To filter by impact level, click the filter icon inside the calendar and select Medium and High importance.</div>
     <div class="live-calendar-wrapper">
       <iframe src="https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=2,3&features=datepicker,timezone,timeselector,filters&countries=25,6,37,72,22,17,39,14,10,35,7,21,43,60,56,36,110,11,26,9,12,4,5&calType=week&timeZone=8&lang=1" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
     </div>
@@ -401,7 +441,7 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 <!-- Runs automatically. No updates needed.                       -->
 <!-- ============================================================ -->
 
-<div id="analyzer" class="panel">
+<div id="analyzer" class="panel" style="display:none;">
   <div class="panel-heading">Trade analyzer</div>
   <div class="panel-sub">Describe any trade in plain English. Get honest feedback on execution, risk, and psychology.</div>
 
@@ -420,8 +460,10 @@ textarea::placeholder, input::placeholder { color: var(--white-faint); }
 <script>
 function switchTab(tab, el) {
   document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.getElementById(tab).classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => {
+    p.style.display = 'none';
+  });
+  document.getElementById(tab).style.display = 'block';
   el.classList.add('active');
 }
 
